@@ -18,11 +18,9 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRI
 ```
 - Make a note of the `appId` and `password`
 
-- Set `ARM_SUBSCRIPTION_ID` in `SetUpAzureEnv.sh`
-
 ## Configure Terraform environment variables
 - Copy `var_values.tfvars.example` to `var_values.tfvars`
-- Edit `var_values.tfvars` such that `YOUR_SUBSCRIPTION_ID_HERE`, `YOUR_APPLICATION-ID_HERE`,`YOUR_SECRET_KEY_HERE` and `YOUR_TENANT_ID_HERE` are replaced by your `subscriptionId`, `appId`, `password` and `tenantId` respectively.
+- Edit `var_values.tfvars` such that `YOUR_SUBSCRIPTION_ID_HERE`, `YOUR_APPLICATION_ID_HERE`,`YOUR_SECRET_KEY_HERE` and `YOUR_TENANT_ID_HERE` are replaced by your `subscriptionId`, `appId`, `password` and `tenantId` respectively.
 
 ## Running the Terraform script
 - Initalise Terraform:
@@ -37,8 +35,17 @@ terraform plan -var-file var_values.tfvars
 ```shell 
 terraform apply -var-file var_values.tfvars
 ```
-
-
+- If this succeeded, a virtual machine will be running on Azure.
+- Find the public IP address of the machine:
+```shell
+az vm show --resource-group stirGroup --name stirVM -d --query [publicIps] --o tsv
+```
+- Make a note of the IP address.
+- To access the machine via ssh:
+```shell
+ssh USERNAME@PUBLICIP
+```
+where `USERNAME` is the value set for `vm_username` (default: `stiruser`) and `PUBLICIP` is the public IP address found with the previous command.
 
 ## Removing the infrastructure
 ```shell

@@ -1,0 +1,57 @@
+## Install Azure CLI
+
+## Install Terraform
+
+## Configure Terraform access to Azure
+- Query your Azure account to get a list of subscription and tenant ID values:
+```bash
+az account show --query "{subscriptionId:id, tenantId:tenantId}"
+```
+- Note the `subscriptionId` and `tenantId` for future use.
+- Set the environment variable `SUBSCRIPTION_ID` to the subscription ID returned by the `az account show` command. In Bash, this would be:
+```bash
+export SUBSCRIPTION_ID=your_subscription_id
+```
+- Create an Azure service prinicple for Terraform to use:
+```bash
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
+```
+- Make a note of the `appId` and `password`
+
+- Set `ARM_SUBSCRIPTION_ID` in `SetUpAzureEnv.sh`
+
+## Configure Terraform environment variables
+- Copy `SetUpAzureEnv.sh.example` to `SetUpAzureEnv.sh`
+- Edit `SetUpAzureEnv.sh` such that `ARM_SUBSCRIPTION_ID`, `ARM_CLIENT_ID`,`ARM_CLIENT_SECRET` and `ARM_TENANT_ID` equal `subscriptionId`, `appId`, `password` and `tenantId` respectively.
+- Export the environment variables:
+```bash
+source SetUpAzureEnv.sh
+```
+
+## Running the Terraform script
+- Initalise Terraform:
+```shell
+terraform init
+```
+- To preview the actions that Terraform will take, run:
+```shell
+terraform plan -var-file var_values.tfvars
+```
+- To run the script:
+```shell 
+terraform apply -var-file var_values.tfvars
+```
+
+
+
+## Removing the infrastructure
+```shell
+terraform destroy
+```
+To avoid incurring unexpected costs, it is highly recommended that you check the Azure web portal to ensure that all resources have successfully been destroyed.
+
+## Troubleshooting
+If you get an error related to `SkuNotAvailable`, try to display all available machine types and see if the chosen machine exists in the region:
+```
+az vm list-skus --output table
+```

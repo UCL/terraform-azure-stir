@@ -1,0 +1,3 @@
+SetUpAzureEnv.sh
+terraform.tfstate*
+.terraform/

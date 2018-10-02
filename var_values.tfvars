@@ -1,0 +1,7 @@
+subscription_id 	= "YOUR_SUBSCRIPTION_ID_HERE"
+client_id 		    = "YOUR_APPLICATION-ID_HERE"
+client_secret 		= "YOUR_SECRET_KEY_HERE"
+tenant_id 		    = "YOUR_TENANT_ID"
+location 		    = "westeurope"
+vm_username 		= "stiruser"
+vm_password 		= "stir%1"

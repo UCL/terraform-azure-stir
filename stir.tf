@@ -142,7 +142,20 @@ resource "azurerm_virtual_machine" "mystirvm" {
         storage_uri = "${azurerm_storage_account.mystirstorageaccount.primary_blob_endpoint}"
     }
 
+    provisioner "remote-exec" {
+        connection {
+            user     = "${var.vm_username}"
+            password = "${var.vm_password}"
+        }
+
+        inline = [
+            "sudo apt-get update",
+            "sudo apt-get upgrade -y"
+        ]
+    }
+
     tags {
         environment = "STIR Demo"
     }
+
 }

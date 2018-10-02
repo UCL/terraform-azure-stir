@@ -49,7 +49,7 @@ where `USERNAME` is the value set for `vm_username` (default: `stiruser`) and `P
 
 ## Removing the infrastructure
 ```shell
-terraform destroy
+terraform destroy -var-file var_values.tfvars
 ```
 To avoid incurring unexpected costs, it is highly recommended that you check the Azure web portal to ensure that all resources have successfully been destroyed.
 

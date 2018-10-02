@@ -21,12 +21,8 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRI
 - Set `ARM_SUBSCRIPTION_ID` in `SetUpAzureEnv.sh`
 
 ## Configure Terraform environment variables
-- Copy `SetUpAzureEnv.sh.example` to `SetUpAzureEnv.sh`
-- Edit `SetUpAzureEnv.sh` such that `ARM_SUBSCRIPTION_ID`, `ARM_CLIENT_ID`,`ARM_CLIENT_SECRET` and `ARM_TENANT_ID` equal `subscriptionId`, `appId`, `password` and `tenantId` respectively.
-- Export the environment variables:
-```bash
-source SetUpAzureEnv.sh
-```
+- Copy `var_values.tfvars.example` to `var_values.tfvars`
+- Edit `var_values.tfvars` such that `YOUR_SUBSCRIPTION_ID_HERE`, `YOUR_APPLICATION-ID_HERE`,`YOUR_SECRET_KEY_HERE` and `YOUR_TENANT_ID_HERE` are replaced by your `subscriptionId`, `appId`, `password` and `tenantId` respectively.
 
 ## Running the Terraform script
 - Initalise Terraform:

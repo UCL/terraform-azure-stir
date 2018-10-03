@@ -119,6 +119,8 @@ resource "azurerm_virtual_machine" "mystirvm" {
         create_option     = "FromImage"
         managed_disk_type = "Standard_LRS"
     }
+    
+    delete_os_disk_on_termination = true
 
     storage_image_reference {
         publisher = "Canonical"
@@ -140,6 +142,15 @@ resource "azurerm_virtual_machine" "mystirvm" {
     boot_diagnostics {
         enabled = "true"
         storage_uri = "${azurerm_storage_account.mystirstorageaccount.primary_blob_endpoint}"
+    }
+
+    provisioner "file" {
+        connection {
+            user     = "${var.vm_username}"
+            password = "${var.vm_password}"
+        }
+        source      = "provision.sh"
+        destination = "/tmp/provision.sh"
     }
 
     provisioner "remote-exec" {

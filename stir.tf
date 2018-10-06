@@ -160,8 +160,7 @@ resource "azurerm_virtual_machine" "mystirvm" {
         }
 
         inline = [
-            "sudo apt-get update",
-            "sudo apt-get upgrade -y"
+            "sudo do-release-upgrade -f DistUpgradeViewNonInteractive"
         ]
     }
 

@@ -150,7 +150,7 @@ resource "azurerm_virtual_machine" "mystirvm" {
             password = "${var.vm_password}"
         }
         source      = "provision.sh"
-        destination = "/tmp/provision.sh"
+        destination = "/home/${var.vm_username}/provision.sh"
     }
 
     provisioner "remote-exec" {
@@ -160,7 +160,9 @@ resource "azurerm_virtual_machine" "mystirvm" {
         }
 
         inline = [
-            "sudo do-release-upgrade -f DistUpgradeViewNonInteractive"
+            "sudo do-release-upgrade -f DistUpgradeViewNonInteractive",
+            "sudo apt-get install -y cmake build-essential libinsighttoolkit4-dev libboost-all-dev",
+            "bash ~/provision.sh"
         ]
     }
 

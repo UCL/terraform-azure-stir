@@ -1,4 +1,6 @@
 # terraform-azure-stir
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1450922.svg)](https://doi.org/10.5281/zenodo.1450922)
+
 Building [STIR](https://github.com/UCL/STIR) on Azure.
 ## Install Azure CLI
 The Azure CLI can either be used from the Azure Cloud Shell or [installed locally](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). 

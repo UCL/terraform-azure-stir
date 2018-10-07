@@ -162,6 +162,7 @@ resource "azurerm_virtual_machine" "mystirvm" {
         inline = [
             "sudo do-release-upgrade -f DistUpgradeViewNonInteractive",
             "sudo apt-get install -y cmake build-essential libinsighttoolkit4-dev libboost-all-dev",
+            "sudo apt-get install -y --no-install-recommends swig python-dev python-scipy python-numpy" 
             "bash ~/provision.sh"
         ]
     }

@@ -8,5 +8,5 @@ cd ~/devel
 git clone http://github.com/UCL/STIR
 mkdir -p ~/devel/STIR-BUILD
 cd ~/devel/STIR-BUILD
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=. ~/devel/STIR
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=. -DBUILD_SWIG_PYTHON=ON -DSTIR_OPENMP=ON ~/devel/STIR
 make -j2 && make test && make install

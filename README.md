@@ -1,7 +1,9 @@
+# terraform-azure-stir
+Building [STIR](https://github.com/UCL/STIR) on Azure.
 ## Install Azure CLI
-
+The Azure CLI can either be used from the Azure Cloud Shell or [installed locally](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). 
 ## Install Terraform
-
+Terraform is pre-installed on Azure Cloud Shell or [installed locally](https://www.terraform.io/intro/getting-started/install.html).
 ## Configure Terraform access to Azure
 - Query your Azure account to get a list of subscription and tenant ID values:
 ```bash

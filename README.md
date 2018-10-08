@@ -16,7 +16,7 @@ az account show --query "{subscriptionId:id, tenantId:tenantId}"
 ```bash
 export SUBSCRIPTION_ID=your_subscription_id
 ```
-- Create an Azure service prinicple for Terraform to use:
+- Create an Azure service prinicpal for Terraform to use:
 ```bash
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
@@ -27,7 +27,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRI
 - Edit `var_values.tfvars` such that `YOUR_SUBSCRIPTION_ID_HERE`, `YOUR_APPLICATION_ID_HERE`,`YOUR_SECRET_KEY_HERE` and `YOUR_TENANT_ID_HERE` are replaced by your `subscriptionId`, `appId`, `password` and `tenantId` respectively.
 
 ## Running the Terraform script
-- Initalise Terraform:
+- Initialise Terraform:
 ```shell
 terraform init
 ```

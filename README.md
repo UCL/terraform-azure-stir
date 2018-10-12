@@ -1,7 +1,11 @@
+# terraform-azure-stir
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1450922.svg)](https://doi.org/10.5281/zenodo.1450922)
+
+Building [STIR](https://github.com/UCL/STIR) on Azure.
 ## Install Azure CLI
-
+The Azure CLI can either be used from the Azure Cloud Shell or [installed locally](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). 
 ## Install Terraform
-
+Terraform is pre-installed on Azure Cloud Shell or [installed locally](https://www.terraform.io/intro/getting-started/install.html).
 ## Configure Terraform access to Azure
 - Query your Azure account to get a list of subscription and tenant ID values:
 ```bash
@@ -12,7 +16,7 @@ az account show --query "{subscriptionId:id, tenantId:tenantId}"
 ```bash
 export SUBSCRIPTION_ID=your_subscription_id
 ```
-- Create an Azure service prinicple for Terraform to use:
+- Create an Azure service prinicpal for Terraform to use:
 ```bash
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
@@ -23,7 +27,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRI
 - Edit `var_values.tfvars` such that `YOUR_SUBSCRIPTION_ID_HERE`, `YOUR_APPLICATION_ID_HERE`,`YOUR_SECRET_KEY_HERE` and `YOUR_TENANT_ID_HERE` are replaced by your `subscriptionId`, `appId`, `password` and `tenantId` respectively.
 
 ## Running the Terraform script
-- Initalise Terraform:
+- Initialise Terraform:
 ```shell
 terraform init
 ```

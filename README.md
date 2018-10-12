@@ -1,7 +1,10 @@
 # terraform-azure-stir
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1450922.svg)](https://doi.org/10.5281/zenodo.1450922)
 
-Building [STIR](https://github.com/UCL/STIR) on Azure.
+This repo demonstrates how to build and install [STIR](https://github.com/UCL/STIR) on an [Azure](https://azure.microsoft.com) VM using [Terraform](https://www.terraform.io/). The VM is described in Terraform files (`.tf`). Terraform deploys a VM in the cloud and then copies and executes a bash script to perform the actual building of STIR. 
+
+An Azure account is required for deployment.
+
 ## Install Azure CLI
 The Azure CLI can either be used from the Azure Cloud Shell or [installed locally](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). 
 ## Install Terraform

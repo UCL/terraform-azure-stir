@@ -32,3 +32,7 @@ variable "vm_password" {
 variable "location" {
   description = "The default Azure region for the resource provisioning"
 }
+
+variable "vm_size" {
+  description = "The default VM size"
+}

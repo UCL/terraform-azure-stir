@@ -111,7 +111,7 @@ resource "azurerm_virtual_machine" "mystirvm" {
     location              = "${var.location}"
     resource_group_name   = "${azurerm_resource_group.mystirgroup.name}"
     network_interface_ids = ["${azurerm_network_interface.mystirnic.id}"]
-    vm_size               = "Standard_D2_v2"
+    vm_size               = "${var.vm_size}"
 
     storage_os_disk {
         name              = "stirOsDisk"
@@ -162,7 +162,7 @@ resource "azurerm_virtual_machine" "mystirvm" {
         inline = [
             "sudo do-release-upgrade -f DistUpgradeViewNonInteractive",
             "sudo apt-get install -y cmake build-essential libinsighttoolkit4-dev libboost-all-dev",
-            "sudo apt-get install -y --no-install-recommends swig python-dev python-scipy python-numpy" 
+            "sudo apt-get install -y --no-install-recommends swig python-dev python-scipy python-numpy", 
             "bash ~/provision.sh"
         ]
     }

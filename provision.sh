@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#sudo apt-get install -y cmake build-essential libinsighttoolkit4-dev \
-# libboost-all-dev
-
 NOCORES=`nproc`
 echo Using $NOCORES cores
 mkdir ~/devel

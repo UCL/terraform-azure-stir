@@ -153,6 +153,15 @@ resource "azurerm_virtual_machine" "mystirvm" {
         destination = "/home/${var.vm_username}/provision.sh"
     }
 
+    provisioner "file" {
+        connection {
+            user     = "${var.vm_username}"
+            password = "${var.vm_password}"
+        }
+        source      = "install_pre_requisites.sh"
+        destination = "/home/${var.vm_username}/install_pre_requisites.sh"
+    }
+
     provisioner "remote-exec" {
         connection {
             user     = "${var.vm_username}"
@@ -161,8 +170,7 @@ resource "azurerm_virtual_machine" "mystirvm" {
 
         inline = [
             "sudo do-release-upgrade -f DistUpgradeViewNonInteractive",
-            "sudo apt-get install -y cmake build-essential libinsighttoolkit4-dev libboost-all-dev",
-            "sudo apt-get install -y --no-install-recommends swig python-dev python-scipy python-numpy", 
+            "sudo bash ~/install_pre_requisites.sh",
             "bash ~/provision.sh"
         ]
     }

@@ -159,7 +159,7 @@ resource "azurerm_virtual_machine" "mystirvm" {
             password = "${var.vm_password}"
         }
         source      = "install_pre_requisites.sh"
-        destination = "/home/${var.vm_username}/install_pre_requisites.sh"
+        destination = "/home/${var.vm_username}/install_prerequisites.sh"
     }
 
     provisioner "remote-exec" {
@@ -170,7 +170,7 @@ resource "azurerm_virtual_machine" "mystirvm" {
 
         inline = [
             "sudo do-release-upgrade -f DistUpgradeViewNonInteractive",
-            "sudo bash ~/install_pre_requisites.sh",
+            "sudo bash ~/install_prerequisites.sh",
             "bash ~/provision.sh"
         ]
     }

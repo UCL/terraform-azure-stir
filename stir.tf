@@ -158,7 +158,7 @@ resource "azurerm_virtual_machine" "mystirvm" {
             user     = "${var.vm_username}"
             password = "${var.vm_password}"
         }
-        source      = "install_pre_requisites.sh"
+        source      = "install_prerequisites.sh"
         destination = "/home/${var.vm_username}/install_prerequisites.sh"
     }
 

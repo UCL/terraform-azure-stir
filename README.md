@@ -5,10 +5,10 @@ This repo demonstrates how to build and install [STIR](https://github.com/UCL/ST
 
 An Azure account is required for deployment.
 
-## Install Azure CLI
-The Azure CLI can either be used from the Azure Cloud Shell or [installed locally](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). 
-## Install Terraform
-Terraform is pre-installed on Azure Cloud Shell or [installed locally](https://www.terraform.io/intro/getting-started/install.html).
+## [Install Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+
+## [Install Terraform](https://www.terraform.io/intro/getting-started/install.html)
+
 ## Configure Terraform access to Azure
 - Query your Azure account to get a list of subscription and tenant ID values:
 ```bash
